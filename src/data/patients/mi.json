@@ -1,0 +1,549 @@
+{
+  "id": "P003",
+  "title": "Inferior STEMI (Atypical)",
+  "room": {
+    "label": "Room 3",
+    "image": "/assets/patients/p003_room_initial.png"
+  },
+  "initial": {
+    "ageSex": "58F",
+    "chiefComplaint": "Nausea and epigastric pain",
+    "hpi": [
+      "58-year-old woman with a history of diabetes, hypertension, and gastroesophageal reflux disease presents for nausea and vomiting. She reports that symptoms began the day prior and occur primarily with physical activity, such as walking up stairs or carrying groceries. During these episodes, she experiences a pressure-like discomfort in the upper abdomen, associated with nausea and occasional retching. Symptoms improve with rest and have not occurred at rest. She states she has had heartburn before and initially attributed the discomfort to reflux, though she notes that her usual antacids have not been helpful. She denies sharp or pleuritic pain and does not describe the sensation as crushing or heavy chest pain. She reports feeling diaphoretic and unwell during episodes but denies syncope or palpitations. She has been compliant with her medications and has no prior history of myocardial infarction."
+    ],
+    "exam": {
+      "HEENT": [
+        "Head atraumatic, normocephalic",
+        "Pupils equal, round, reactive to light",
+        "Extraocular movements intact",
+        "Oropharynx clear"
+      ],
+      "Neck": [
+        "Supple",
+        "No meningismus",
+        "No lymphadenopathy",
+        "No jugular venous distention on initial exam"
+      ],
+      "Cardiovascular": [
+        "Mild tachycardia",
+        "Regular rhythm",
+        "Normal S1/S2",
+        "No murmurs, rubs, or gallops"
+      ],
+      "Respiratory": [
+        "Clear to auscultation bilaterally",
+        "No wheezes, rales, or rhonchi",
+        "No increased work of breathing"
+      ],
+      "Abdomen": [
+        "Mild epigastric tenderness to palpation",
+        "Soft",
+        "Non-distended",
+        "No rebound or guarding",
+        "Normal bowel sounds"
+      ],
+      "Musculoskeletal": [
+        "Full range of motion in all extremities",
+        "No chest wall tenderness"
+      ],
+      "Skin": [
+        "Diaphoretic",
+        "Cool, clammy skin",
+        "No rash"
+      ],
+      "Neurologic": [
+        "Alert and oriented x3",
+        "Cranial nerves II-XII intact",
+        "No focal neurologic deficits"
+      ],
+      "Psychiatric": [
+        "Appears uncomfortable and anxious",
+        "Appropriate thought process"
+      ],
+      "Extremities / Vascular": [
+        "Warm extremities initially",
+        "No peripheral edema",
+        "Peripheral pulses intact and symmetric"
+      ]
+    },
+    "vitals": {
+      "hr": 102,
+      "bpSys": 150,
+      "bpDia": 90,
+      "rr": 18,
+      "spo2": 98,
+      "tempC": 36.8
+    }
+  },
+  "truth": {
+    "diagnoses": [
+      "Inferior STEMI"
+    ],
+    "highRiskFlags": [
+      "POSS_RV_MI"
+    ]
+  },
+  "state": {
+    "current": "initial",
+    "flags": {
+      "ecgDone": false,
+      "asaGiven": false,
+      "cathActivated": false,
+      "nitratesGiven": false
+    }
+  },
+  "orders": [
+    {
+      "id": "ecg",
+      "name": "STAT ECG",
+      "type": "imaging",
+      "tatSec": 30
+    },
+    {
+      "id": "asa",
+      "name": "Aspirin 325 chew",
+      "type": "med",
+      "tatSec": 0
+    },
+    {
+      "id": "antiemetic",
+      "name": "Ondansetron",
+      "type": "med",
+      "tatSec": 0
+    },
+    {
+      "id": "cath",
+      "name": "Activate Cath Lab",
+      "type": "consult",
+      "tatSec": 0
+    },
+    {
+      "id": "heparin",
+      "name": "Heparin",
+      "type": "med",
+      "tatSec": 0
+    },
+    {
+      "id": "p2y12",
+      "name": "P2Y12 inhibitor",
+      "type": "med",
+      "tatSec": 0
+    },
+    {
+      "id": "nitrates",
+      "name": "Nitroglycerin",
+      "type": "med",
+      "tatSec": 0
+    },
+    {
+      "id": "maalox",
+      "name": "Maalox",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "famotidine",
+      "name": "Famotidine",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "omeprazole",
+      "name": "Omeprazole",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "simethicone",
+      "name": "Simethicone",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "motrin",
+      "name": "Motrin",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "tylenol",
+      "name": "Tylenol",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "reglan",
+      "name": "Reglan",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "zofran",
+      "name": "Zofran",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "admit_medicine",
+      "name": "Admit Medicine",
+      "type": "consult",
+      "tatSec": 0
+    },
+    {
+      "id": "cardiology_consult",
+      "name": "Consult Cardiology",
+      "type": "consult",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "fluids",
+      "name": "IV crystalloids (balanced) bolus",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "norepi",
+      "name": "Norepinephrine",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    },
+    {
+      "id": "vasopressin",
+      "name": "Vasopressin",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    },
+    {
+      "id": "epinephrine",
+      "name": "Epinephrine",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    },
+    {
+      "id": "dirty_epi",
+      "name": "Push-dose epinephrine (dirty epi)",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    },
+    {
+      "id": "dobutamine",
+      "name": "Dobutamine",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    }
+  ],
+  "results": {
+    "ecg": {
+      "summary": "ST elevation II, III, aVF with reciprocal depression I, aVL. Sinus tach."
+    }
+  },
+  "rules": {
+    "onOrderEffects": [
+      {
+        "when": "ecg",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "ecgDone",
+            "value": true
+          }
+        ]
+      },
+      {
+        "when": "asa",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "asaGiven",
+            "value": true
+          }
+        ]
+      },
+      {
+        "when": "cath",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "cathActivated",
+            "value": true
+          },
+          {
+            "type": "setFlag",
+            "flag": "admitted",
+            "value": true
+          },
+          {
+            "type": "setFlag",
+            "flag": "admitTooEarly",
+            "value": false
+          },
+          {
+            "type": "setState",
+            "value": "resolved"
+          }
+        ]
+      },
+      {
+        "when": "nitrates",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "nitratesGiven",
+            "value": true
+          }
+        ]
+      },
+      {
+        "when": "fluids",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "hr": -6,
+              "bpSys": 10,
+              "bpDia": 5
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "fluids_wear_off",
+            "delaySec": 180,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "hr": 6,
+                  "bpSys": -8,
+                  "bpDia": -4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "norepi",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 20,
+              "bpDia": 10,
+              "hr": 2
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "norepi_wear_off",
+            "delaySec": 240,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -15,
+                  "bpDia": -8,
+                  "hr": -1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "vasopressin",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 16,
+              "bpDia": 8
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "vaso_wear_off",
+            "delaySec": 240,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -12,
+                  "bpDia": -6
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "epinephrine",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 18,
+              "bpDia": 8,
+              "hr": 6
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "epi_wear_off",
+            "delaySec": 180,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -14,
+                  "bpDia": -6,
+                  "hr": -4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "dirty_epi",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 10,
+              "bpDia": 4,
+              "hr": 4
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "dirty_epi_wear_off",
+            "delaySec": 60,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -10,
+                  "bpDia": -4,
+                  "hr": -4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "dobutamine",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 8,
+              "bpDia": 4,
+              "hr": 6
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "dobutamine_wear_off",
+            "delaySec": 240,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -6,
+                  "bpDia": -3,
+                  "hr": -4
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "timeEvents": [
+      {
+        "atSec": 300,
+        "ifNotFlags": [
+          "ecgDone"
+        ],
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "hr": 8
+            }
+          }
+        ],
+        "message": "Ongoing ischemia; diaphoresis worsening."
+      },
+      {
+        "atSec": 600,
+        "ifNotFlags": [
+          "asaGiven"
+        ],
+        "do": [],
+        "message": "Delay in antiplatelet therapy increases infarct risk."
+      },
+      {
+        "atSec": 1200,
+        "ifNotFlags": [
+          "cathActivated"
+        ],
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": -60,
+              "bpDia": -30
+            }
+          }
+        ],
+        "message": "Hypotension develops; bradyarrhythmia risk rises."
+      }
+    ]
+  },
+  "scoring": {
+    "mustDo": [
+      {
+        "id": "ecg",
+        "bySec": 300,
+        "points": 20,
+        "missPenalty": -40
+      },
+      {
+        "id": "asa",
+        "bySec": 600,
+        "points": 15,
+        "missPenalty": -25
+      },
+      {
+        "id": "cath",
+        "bySec": 1200,
+        "points": 25,
+        "missPenalty": -60
+      }
+    ],
+    "hardPenalties": [
+      {
+        "ifOrdered": "nitrates",
+        "penalty": -25,
+        "note": "Avoid nitrates early in inferior/RV MI physiology."
+      }
+    ]
+  }
+}

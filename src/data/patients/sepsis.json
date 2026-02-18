@@ -1,0 +1,373 @@
+{
+  "id": "P001",
+  "title": "Fournier Gangrene + DKA",
+  "room": {
+    "label": "Room 1",
+    "image": "/assets/patients/p001_room_initial.png",
+    "altImages": {
+      "worsening": "/assets/patients/p001_room_worsening.png",
+      "crashing": "/assets/patients/p001_room_crashing.png"
+    }
+  },
+  "initial": {
+    "ageSex": "46M",
+    "chiefComplaint": "Nausea and vomiting",
+    "hpi": [
+      "46-year-old man with a history of diabetes and hypertension presents for nausea and vomiting.",
+      "Several days of poor oral intake; hasn't been able to keep much down.",
+      "Symptoms began gradually and have progressively worsened over the past 5 days with generalized weakness and lightheadedness on standing.",
+      "Attributes symptoms to a stomach bug; has not been checking blood sugars regularly.",
+      "Off and on with insulin over the past week because he hasn't been eating.",
+      "Denies chest pain, shortness of breath, abdominal pain, or diarrhea. Does not volunteer focal pain complaints.",
+      "EMS reports he appeared dehydrated and tachypneic on scene but was alert and oriented throughout transport."
+    ],
+    "exam": {
+      "HEENT": [
+        "Head atraumatic, normocephalic",
+        "Pupils equal, round, reactive to light",
+        "Extraocular movements intact",
+        "Oropharynx clear",
+        "Dry mucous membranes",
+        "No facial or neck soft tissue involvement"
+      ],
+      "Neck": [
+        "Supple",
+        "No meningismus",
+        "No lymphadenopathy",
+        "No JVD"
+      ],
+      "Cardiovascular": [
+        "Tachycardia",
+        "Regular rhythm",
+        "Normal S1/S2",
+        "No murmurs, rubs, or gallops"
+      ],
+      "Respiratory": [
+        "Clear to auscultation bilaterally",
+        "No wheezes, rales, or rhonchi",
+        "Tachypnea",
+        "Increased work of breathing"
+      ],
+      "Abdomen": [
+        "Soft",
+        "Non-distended",
+        "Non-tender",
+        "No rebound or guarding",
+        "Normal bowel sounds"
+      ],
+      "Genitourinary": [
+        "Ill-defined erythema of affected area",
+        "Marked edema and induration",
+        "Tense, swollen skin",
+        "Dusky, gray discoloration",
+        "Bullae serous",
+        "Crepitus on palpation",
+        "Foul-smelling drainage",
+        "Areas of necrosis or black eschar",
+        "No involvement of surrounding uninvolved skin early",
+        "Testes non-tender"
+      ],
+      "Musculoskeletal": [
+        "Full range of motion in unaffected extremities",
+        "No joint swelling or deformity",
+        "Pain with ROM testing of the R and L LE"
+      ],
+      "Skin": [
+        "Diaphoresis",
+        "Poor skin turgor",
+        "No urticaria or diffuse erythema outside involved region"
+      ],
+      "Neurologic": [
+        "Alert and oriented x3",
+        "Cranial nerves II-XII intact",
+        "No focal deficits"
+      ],
+      "Psychiatric": [
+        "Appropriate mood and affect",
+        "Anxiety related to pain or dyspnea"
+      ],
+      "Extremities / Vascular": [
+        "Warm extremities",
+        "No cyanosis or clubbing"
+      ]
+    },
+    "vitals": { "hr": 110, "bpSys": 110, "bpDia": 80, "rr": 30, "spo2": 100, "tempC": 36.8 },
+    "monitorNotes": ["Kussmaul pattern implied", "ECG: sinus tachycardia"]
+  },
+  "truth": {
+    "diagnoses": ["Fournier gangrene", "Sepsis", "Diabetic ketoacidosis"],
+    "highRiskFlags": ["NEC_FASCIITIS", "DKA"]
+  },
+  "state": {
+    "current": "initial",
+    "flags": {
+      "fluidsStarted": false,
+      "abxGiven": false,
+      "abxHasClinda": false,
+      "uroConsulted": false,
+      "gsConsulted": false,
+      "icuConsulted": false,
+      "orEscalated": false,
+      "kKnown": false,
+      "insulinStarted": false,
+      "dextroseAdded": false
+    }
+  },
+  "orders": [
+    { "id": "fs_glucose", "name": "Fingerstick glucose", "type": "lab", "tatSec": 15 },
+    { "id": "bmp", "name": "BMP", "type": "lab", "tatSec": 120 },
+    { "id": "hepatic_panel", "name": "Hepatic Panel", "type": "lab", "tatSec": 150, "scoreDelta": -1 },
+    { "id": "cbc", "name": "CBC", "type": "lab", "tatSec": 150 },
+    { "id": "vbg", "name": "VBG", "type": "lab", "tatSec": 120 },
+    { "id": "type_screen", "name": "Type & Screen", "type": "lab", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "pt_inr", "name": "PT/INR", "type": "lab", "tatSec": 180, "scoreDelta": -1 },
+    { "id": "ptt", "name": "PTT", "type": "lab", "tatSec": 180, "scoreDelta": -1 },
+    { "id": "tsh", "name": "TSH", "type": "lab", "tatSec": 180, "scoreDelta": -1 },
+    { "id": "t4", "name": "T4", "type": "lab", "tatSec": 180, "scoreDelta": -1 },
+    { "id": "hcg", "name": "HCG", "type": "lab", "tatSec": 180, "scoreDelta": -1 },
+    { "id": "magnesium", "name": "Magnesium", "type": "lab", "tatSec": 150, "scoreDelta": -1 },
+    { "id": "phosphorus", "name": "Phosphorous", "type": "lab", "tatSec": 150, "scoreDelta": -1 },
+    { "id": "esr", "name": "ESR", "type": "lab", "tatSec": 180, "scoreDelta": -1 },
+    { "id": "crp", "name": "CRP", "type": "lab", "tatSec": 180, "scoreDelta": -1 },
+    { "id": "bHB", "name": "Beta-hydroxybutyrate", "type": "lab", "tatSec": 180 },
+    { "id": "lactate", "name": "Lactate", "type": "lab", "tatSec": 150 },
+    { "id": "bcx2", "name": "Blood cultures x2", "type": "lab", "tatSec": 180, "note": "Do not delay antibiotics" },
+    { "id": "ua", "name": "Urinalysis", "type": "lab", "tatSec": 180 },
+    { "id": "ecg", "name": "ECG", "type": "lab", "tatSec": 60, "scoreDelta": -1 },
+
+    { "id": "monitor", "name": "Cardiac monitoring", "type": "monitoring", "tatSec": 0 },
+    { "id": "ivx2", "name": "2 large-bore IVs", "type": "nursing", "tatSec": 30 },
+
+    { "id": "fluids", "name": "IV crystalloids (balanced) bolus", "type": "med", "tatSec": 0 },
+    { "id": "k_replete", "name": "Potassium repletion", "type": "med", "tatSec": 60 },
+    { "id": "add_dextrose", "name": "Add dextrose to fluids", "type": "med", "tatSec": 0 },
+
+    { "id": "vanc", "name": "Vancomycin", "type": "med", "tatSec": 60 },
+    { "id": "pip_tazo", "name": "Zosyn (piperacillin-tazobactam)", "type": "med", "tatSec": 60 },
+    { "id": "unasyn", "name": "Unasyn", "type": "med", "tatSec": 60, "scoreDelta": -1 },
+    { "id": "ceftriaxone", "name": "Ceftriaxone", "type": "med", "tatSec": 60, "scoreDelta": -1 },
+    { "id": "azithro", "name": "Azithromycin", "type": "med", "tatSec": 60, "scoreDelta": -1 },
+    { "id": "meropenem", "name": "Meropenem", "type": "med", "tatSec": 60, "scoreDelta": -1 },
+    { "id": "doxycycline", "name": "Doxycycline", "type": "med", "tatSec": 60, "scoreDelta": -1 },
+    { "id": "metronidazole", "name": "Metronidazole", "type": "med", "tatSec": 60, "scoreDelta": -1 },
+    { "id": "bactrim", "name": "Bactrim", "type": "med", "tatSec": 60, "scoreDelta": -1 },
+    { "id": "clinda", "name": "Clindamycin", "type": "med", "tatSec": 60 },
+
+    { "id": "tylenol", "name": "Tylenol", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "toradol", "name": "Toradol", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "motrin", "name": "Motrin", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "zofran", "name": "Zofran", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "reglan", "name": "Reglan", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "k_oral", "name": "Potassium Oral repletion", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "k_iv", "name": "Potassium IV", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "mag_sulfate", "name": "Magnesium sulfate 2g", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "calcium_gluconate", "name": "Calcium gluconate", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "insulin_sq", "name": "Regular Insulin Subq", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "insulin_gtt", "name": "IV insulin infusion (0.1 u/kg/hr)", "type": "med", "tatSec": 30, "requires": ["kKnown"] },
+    { "id": "norepi", "name": "Norepinephrine", "type": "med", "tatSec": 0, "scoreDelta": 4 },
+    { "id": "vasopressin", "name": "Vasopressin", "type": "med", "tatSec": 0, "scoreDelta": -2 },
+    { "id": "epinephrine", "name": "Epinephrine", "type": "med", "tatSec": 0, "scoreDelta": -2 },
+    { "id": "dirty_epi", "name": "Push-dose epinephrine (dirty epi)", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "dobutamine", "name": "Dobutamine", "type": "med", "tatSec": 0, "scoreDelta": -2 },
+
+    { "id": "xr_chest", "name": "XR Chest", "type": "imaging", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "xr_soft_tissue_neck", "name": "XR Soft tissue neck", "type": "imaging", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "xr_hip_pelvis", "name": "XR Hip/Pelvis", "type": "imaging", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "xr_r_femur", "name": "XR R Femur", "type": "imaging", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "xr_l_femur", "name": "XR L Femur", "type": "imaging", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "xr_l_knee", "name": "XR L Knee", "type": "imaging", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "xr_r_knee", "name": "XR R Knee", "type": "imaging", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "xr_r_tib_fib", "name": "XR R Tib/fib", "type": "imaging", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "xr_l_tib_fib", "name": "XR L Tib/fib", "type": "imaging", "tatSec": 240, "scoreDelta": -1 },
+    { "id": "ct_head_nc", "name": "CT Head Noncontrast", "type": "imaging", "tatSec": 360, "scoreDelta": -1 },
+    { "id": "cta_head_neck", "name": "CTA Head/Neck", "type": "imaging", "tatSec": 420, "scoreDelta": -1 },
+    { "id": "cta_pe", "name": "CTA PE study", "type": "imaging", "tatSec": 420, "scoreDelta": -1 },
+    { "id": "ct_abd_pelvis", "name": "CT Abdomen Pelvis W contrast", "type": "imaging", "tatSec": 420, "scoreDelta": -1 },
+    { "id": "ct_pelvis", "name": "CT pelvis w/ IV contrast", "type": "imaging", "tatSec": 420, "note": "Must not delay OR if exam convincing" },
+
+    { "id": "admit_medicine", "name": "Admit Medicine", "type": "consult", "tatSec": 0 },
+    { "id": "endo", "name": "Consult Endocrine", "type": "consult", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "rheum", "name": "Consult Rheumatologist", "type": "consult", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "uro", "name": "Consult Urology", "type": "consult", "tatSec": 0 },
+    { "id": "gs", "name": "Consult General Surgery", "type": "consult", "tatSec": 0 },
+    { "id": "icu", "name": "Consult Medical ICU", "type": "consult", "tatSec": 0, "scoreDelta": -1 }
+  ],
+  "results": {
+    "bmp": { "na": 130, "k": 5.0, "cl": 95, "co2": 10, "bun": 34, "cr": 1.6, "glucose": 520, "anionGap": 25 },
+    "vbg": { "pH": 7.12, "pCO2": 22, "hco3": 7 },
+    "bHB": { "mmolL": 7.2 },
+    "cbc": { "wbc": 19.8, "hgb": 13.9, "plt": 310 },
+    "lactate": { "mmolL": 4.8 },
+    "ua": { "ketones": "large", "glucose": "large" },
+    "ct_pelvis": { "summary": "Subcutaneous gas tracking along fascial planes in perineum/scrotum; concern for necrotizing infection." },
+    "fs_glucose": { "mgdL": 520 }
+  },
+  "rules": {
+    "onOrderEffects": [
+      {
+        "when": "fluids",
+        "do": [
+          { "type": "setFlag", "flag": "fluidsStarted", "value": true },
+          { "type": "modifyVitals", "delta": { "hr": -10, "bpSys": 12, "bpDia": 6 } },
+          {
+            "type": "startTimer",
+            "timerId": "fluids_wear_off",
+            "delaySec": 180,
+            "message": "Fluid effect is wearing off.",
+            "do": [{ "type": "modifyVitals", "delta": { "hr": 8, "bpSys": -10, "bpDia": -6 } }]
+          }
+        ]
+      },
+
+      {
+        "when": "vanc",
+        "do": [{ "type": "setFlag", "flag": "abxGiven", "value": true }]
+      },
+      {
+        "when": "pip_tazo",
+        "do": [{ "type": "setFlag", "flag": "abxGiven", "value": true }]
+      },
+      {
+        "when": "clinda",
+        "do": [
+          { "type": "setFlag", "flag": "abxGiven", "value": true },
+          { "type": "setFlag", "flag": "abxHasClinda", "value": true }
+        ]
+      },
+
+      { "when": "uro", "do": [{ "type": "setFlag", "flag": "uroConsulted", "value": true }] },
+      { "when": "gs", "do": [{ "type": "setFlag", "flag": "gsConsulted", "value": true }, { "type": "setFlag", "flag": "orEscalated", "value": true }, { "type": "setState", "value": "stabilizing" }] },
+      { "when": "icu", "do": [{ "type": "setFlag", "flag": "icuConsulted", "value": true }] },
+
+      {
+        "when": "bmp",
+        "do": [{ "type": "setFlag", "flag": "kKnown", "value": true }]
+      },
+      {
+        "when": "insulin_gtt",
+        "guard": { "requiresFlags": ["kKnown"], "disallowIf": [{ "flag": "kBelow33", "value": true }] },
+        "do": [{ "type": "setFlag", "flag": "insulinStarted", "value": true }]
+      },
+      {
+        "when": "add_dextrose",
+        "guard": { "requiresFlags": ["insulinStarted"] },
+        "do": [{ "type": "setFlag", "flag": "dextroseAdded", "value": true }]
+      },
+      {
+        "when": "norepi",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 20, "bpDia": 10, "hr": 2 } },
+          {
+            "type": "startTimer",
+            "timerId": "norepi_wear_off",
+            "delaySec": 240,
+            "message": "Pressor effect wanes; reassess dosing.",
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -15, "bpDia": -8, "hr": -1 } }]
+          }
+        ]
+      },
+      {
+        "when": "vasopressin",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 16, "bpDia": 8 } },
+          {
+            "type": "startTimer",
+            "timerId": "vaso_wear_off",
+            "delaySec": 240,
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -12, "bpDia": -6 } }]
+          }
+        ]
+      },
+      {
+        "when": "epinephrine",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 18, "bpDia": 8, "hr": 6 } },
+          {
+            "type": "startTimer",
+            "timerId": "epi_wear_off",
+            "delaySec": 180,
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -14, "bpDia": -6, "hr": -4 } }]
+          }
+        ]
+      },
+      {
+        "when": "dirty_epi",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 10, "bpDia": 4, "hr": 4 } },
+          {
+            "type": "startTimer",
+            "timerId": "dirty_epi_wear_off",
+            "delaySec": 60,
+            "message": "Push-dose epi effect is short-lived.",
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -10, "bpDia": -4, "hr": -4 } }]
+          }
+        ]
+      },
+      {
+        "when": "dobutamine",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 8, "bpDia": 4, "hr": 6 } },
+          {
+            "type": "startTimer",
+            "timerId": "dobutamine_wear_off",
+            "delaySec": 240,
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -6, "bpDia": -3, "hr": -4 } }]
+          }
+        ]
+      }
+    ],
+    "derivedFlags": [
+      {
+        "id": "kBelow33",
+        "fromResult": "bmp.k",
+        "rule": "LT",
+        "value": 3.3
+      }
+    ],
+    "timeEvents": [
+      {
+        "atSec": 300,
+        "ifNotFlags": ["fluidsStarted", "abxGiven"],
+        "do": [
+          { "type": "setState", "value": "worsening" },
+          { "type": "modifyVitals", "delta": { "hr": 10, "bpSys": -30, "bpDia": -20, "rr": 5 } }
+        ],
+        "message": "He looks worse. BP is dropping."
+      },
+      {
+        "atSec": 600,
+        "ifNotFlags": ["uroConsulted"],
+        "do": [
+          { "type": "modifyVitals", "delta": { "hr": 10, "bpSys": -10, "rr": 5 } }
+        ],
+        "message": "Metabolic acidosis is worsening. Lactate rising."
+      },
+      {
+        "atSec": 900,
+        "ifNotFlags": ["orEscalated"],
+        "do": [
+          { "type": "setState", "value": "crashing" },
+          { "type": "modifyVitals", "delta": { "hr": 15, "bpSys": -20, "bpDia": -10, "rr": 5 } }
+        ],
+        "message": "Mental status is declining. Shock physiology."
+      }
+    ]
+  },
+  "scoring": {
+    "mustDo": [
+      { "id": "fluids", "bySec": 300, "points": 15, "missPenalty": -20 },
+      { "id": "vanc", "bySec": 3600, "points": 10, "missPenalty": -25, "note": "Antibiotics within 1 hour (bundle)" },
+      { "id": "pip_tazo", "bySec": 3600, "points": 10, "missPenalty": -25 },
+      { "id": "clinda", "bySec": 3600, "points": 10, "missPenalty": -30, "note": "Toxin suppression required" },
+      { "id": "uro", "bySec": 600, "points": 15, "missPenalty": -35 },
+      { "id": "gs", "bySec": 1200, "points": 20, "missPenalty": -50 }
+    ],
+    "softPenalties": [
+      { "ifOrdered": "ct_pelvis", "andNotFlags": ["orEscalated"], "penalty": -10, "note": "Imaging must not delay OR if convincing exam" }
+    ]
+  },
+  "endSummary": {
+    "successText": "Fournier gangrene + DKA: resuscitate, broad abx with clinda, urgent surgical debridement without CT delay, parallel DKA management, ICU.",
+    "failureText": "Delayed resuscitation/antibiotics/OR escalation increased shock progression and mortality risk."
+  }
+}

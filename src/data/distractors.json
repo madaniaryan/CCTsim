@@ -1,0 +1,64 @@
+[
+  {
+    "id": "D001",
+    "type": "ecg",
+    "prompt": "Review the ECG shown. What do you do?",
+    "image": "/assets/distractors/ecg_inferior_stemi.png",
+    "choices": [
+      { "id": "activate_cath", "label": "Activate Cath Lab", "score": 10, "feedback": "Correct--time-sensitive reperfusion." },
+      { "id": "gi_cocktail", "label": "Treat GERD first", "score": -10, "feedback": "Missed STEMI--delays reperfusion." },
+      { "id": "ct_abd", "label": "CT abdomen", "score": -15, "feedback": "Critical delay for ACS." },
+      { "id": "send_home", "label": "Send them home", "score": -20, "feedback": "Unsafe--misses a STEMI." }
+    ]
+  },
+  {
+    "id": "D002",
+    "type": "decision",
+    "prompt": "Child drank household bleach. Next best action?",
+    "choices": [
+      { "id": "send_home", "label": "Send them home", "score": -10, "feedback": "Unsafe--needs evaluation and airway monitoring." },
+      { "id": "activated_charcoal", "label": "Administer activated charcoal", "score": -10, "feedback": "Not recommended for caustic ingestions." },
+      { "id": "observe_poison", "label": "Observe for symptoms and contact the regional poison control center", "score": 10, "feedback": "Correct--observe for airway compromise and consult poison control." },
+      { "id": "gi_endoscopy", "label": "Obtain emergent GI consultation for endoscopy", "score": -5, "feedback": "Not first-line without airway assessment and tox guidance." },
+      { "id": "ipecac", "label": "Induce emesis with syrup of ipecac", "score": -10, "feedback": "Contraindicated; risk of re-exposure to caustic." }
+    ]
+  },
+  {
+    "id": "D003",
+    "type": "ecg",
+    "prompt": "ECG today--presenting with chest pain that resolved, they look great. What do you want to do?",
+    "image": "/assets/distractors/ecg_wellens.png",
+    "attendingImage": "/assets/attending_alt.png",
+    "choices": [
+      { "id": "gi_cocktail", "label": "Discharge with Pepcid/Maalox", "score": -15, "feedback": "Missed Wellens pattern--high risk LAD lesion." },
+      { "id": "observe_trop", "label": "Observe and order troponin", "score": -5, "feedback": "Incomplete. Wellens requires urgent cardiology and avoidance of stress testing." },
+      { "id": "activate_cath", "label": "Activate cath lab", "score": 10, "feedback": "Correct--Wellens/reperfusion pattern concerning for LAD OMI/stenosis." }
+    ]
+  },
+  {
+    "id": "D004",
+    "type": "decision",
+    "prompt": "28-year-old male twisted ankle playing soccer. Immediate pain/swelling with medial ankle tenderness. What do you want to do?",
+    "image": "/assets/distractors/xray_ankle_maisonneuve.png",
+    "revealImageOnAnswer": true,
+    "choices": [
+      { "id": "rest_ice", "label": "Rest, ice, Motrin, send home", "score": -10, "feedback": "Missed unstable ankle injury." },
+      { "id": "xr_ankle", "label": "XR ankle", "score": -5, "feedback": "Incomplete--consider proximal fibula injury." },
+      { "id": "xr_ankle_tibfib", "label": "XR ankle + tib/fib", "score": 10, "feedback": "Correct--Maisonneuve fracture (prox fibula spiral fracture + unstable ankle). Evaluate syndesmosis/deltoid injury." }
+    ]
+  },
+  {
+    "id": "D005",
+    "type": "ecg",
+    "prompt": "Take a look at this ECG. Patient with generalized weakness. What do you want to do?",
+    "image": "/assets/distractors/ecg_hyperkalemia.png",
+    "attendingImage": "/assets/attending_alt.png",
+    "choices": [
+      { "id": "magnesium", "label": "Give magnesium", "score": -5, "feedback": "Not first-line for hyperkalemia ECG changes." },
+      { "id": "pace", "label": "Treat with transcutaneous pacing", "score": -5, "feedback": "Address hyperkalemia first unless unstable bradycardia persists." },
+      { "id": "ep_consult", "label": "Consult cardiology for EP evaluation / transfer", "score": -5, "feedback": "Do not delay emergent hyperkalemia treatment." },
+      { "id": "cath", "label": "Activate the cath lab", "score": -10, "feedback": "This is not STEMI; treat hyperkalemia." },
+      { "id": "hyperk", "label": "IV Calcium, Insulin, Lokelma", "score": 10, "feedback": "Correct--stabilize myocardium and shift K." }
+    ]
+  }
+]

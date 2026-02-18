@@ -1,0 +1,189 @@
+{
+  "id": "P004",
+  "title": "Penetrating Chest Trauma -> Hemothorax",
+  "room": { "label": "Room 4", "image": "/assets/patients/p004_room_initial.png", "altImages": { "worsening": "/assets/patients/p004_room_worsening.png" } },
+  "initial": {
+    "ageSex": "32M",
+    "chiefComplaint": "Stab wound to chest",
+    "hpi": [
+      "32-year-old man presents after an assault. He reports being stabbed once in the chest with an unknown object during an altercation. On arrival, he is awake, alert, and speaking in full sentences, stating that he feels shaken up but otherwise okay. He denies shortness of breath at rest and is able to answer questions appropriately. He describes localized chest pain near the wound site but denies radiation, palpitations, or dizziness. He reports no loss of consciousness. He has no known medical history and takes no daily medications. He is unsure of his last tetanus immunization. EMS reports bleeding was minimal at the scene and that the patient remained hemodynamically stable throughout transport."
+    ],
+    "exam": {
+      "HEENT": [
+        "Head atraumatic, normocephalic",
+        "Pupils equal, round, reactive to light",
+        "Extraocular movements intact",
+        "No facial or scalp lacerations"
+      ],
+      "Neck": [
+        "Supple",
+        "Trachea midline",
+        "No jugular venous distention",
+        "No cervical spine tenderness"
+      ],
+      "Cardiovascular": [
+        "Mild tachycardia",
+        "Regular rhythm",
+        "Normal S1/S2",
+        "No murmurs"
+      ],
+      "Respiratory": [
+        "Mildly decreased breath sounds on the right",
+        "Progressive tachypnea on reassessment",
+        "No wheezes or crackles initially",
+        "No stridor"
+      ],
+      "Chest Wall": [
+        "Single penetrating wound to right anterior chest",
+        "Minimal external bleeding initially",
+        "Tenderness around wound site",
+        "No crepitus on initial exam"
+      ],
+      "Abdomen": [
+        "Soft",
+        "Non-distended",
+        "Non-tender",
+        "No rebound or guarding"
+      ],
+      "Musculoskeletal": [
+        "Full range of motion in all extremities",
+        "No long bone deformities"
+      ],
+      "Skin": [
+        "Pallor",
+        "Diaphoresis",
+        "No rash"
+      ],
+      "Neurologic": [
+        "Alert and oriented x3",
+        "GCS 15"
+      ]
+    },
+    "vitals": { "hr": 96, "bpSys": 128, "bpDia": 84, "rr": 18, "spo2": 94, "tempC": 36.7 }
+  },
+  "truth": { "diagnoses": ["Penetrating thoracic trauma", "Developing R hemothorax"], "highRiskFlags": ["HEMORRHAGIC_SHOCK"] },
+  "state": { "current": "initial", "flags": { "lvl1Activated": false, "tsDone": false, "bloodStarted": false, "cxrDone": false, "chestTubePlaced": false } },
+  "orders": [
+    { "id": "lvl1", "name": "Activate Level 1 Trauma", "type": "consult", "tatSec": 0 },
+    { "id": "o2_nc", "name": "Oxygen via nasal cannula", "type": "nursing", "tatSec": 0 },
+    { "id": "ivx2", "name": "2 large-bore IVs / rapid infuser access", "type": "nursing", "tatSec": 30 },
+
+    { "id": "cbc", "name": "CBC", "type": "lab", "tatSec": 150 },
+    { "id": "bmp", "name": "BMP", "type": "lab", "tatSec": 150 },
+    { "id": "coags", "name": "Coags", "type": "lab", "tatSec": 180 },
+    { "id": "lactate", "name": "Lactate", "type": "lab", "tatSec": 150 },
+    { "id": "ts", "name": "Type & Screen", "type": "lab", "tatSec": 240 },
+    { "id": "cxr", "name": "Portable CXR", "type": "imaging", "tatSec": 180 },
+    { "id": "efast", "name": "eFAST", "type": "imaging", "tatSec": 60 },
+
+    { "id": "blood", "name": "Give blood products (PRBC +/- plasma)", "type": "med", "tatSec": 0, "requires": ["tsDone"] },
+    { "id": "chest_tube", "name": "Right-sided chest tube", "type": "procedure", "tatSec": 120 },
+    { "id": "admit_medicine", "name": "Admit Medicine", "type": "consult", "tatSec": 0 },
+    { "id": "trauma_consult", "name": "Consult Trauma Surgery", "type": "consult", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "sicu_consult", "name": "Consult Surgical ICU", "type": "consult", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "fluids", "name": "IV crystalloids (balanced) bolus", "type": "med", "tatSec": 0, "scoreDelta": -1 },
+    { "id": "norepi", "name": "Norepinephrine", "type": "med", "tatSec": 0, "scoreDelta": -2 },
+    { "id": "vasopressin", "name": "Vasopressin", "type": "med", "tatSec": 0, "scoreDelta": -2 },
+    { "id": "epinephrine", "name": "Epinephrine", "type": "med", "tatSec": 0, "scoreDelta": -2 },
+    { "id": "dirty_epi", "name": "Push-dose epinephrine (dirty epi)", "type": "med", "tatSec": 0, "scoreDelta": -2 },
+    { "id": "dobutamine", "name": "Dobutamine", "type": "med", "tatSec": 0, "scoreDelta": -2 }
+  ],
+  "results": {
+    "cxr": { "summary": "Large right-sided hemothorax with basilar opacification/blunting." },
+    "chest_tube": { "initialOutputMl": 1200, "note": "Large initial output suggests ongoing bleeding." }
+  },
+  "rules": {
+    "onOrderEffects": [
+      { "when": "lvl1", "do": [{ "type": "setFlag", "flag": "lvl1Activated", "value": true }] },
+      { "when": "ts", "do": [{ "type": "setFlag", "flag": "tsDone", "value": true }] },
+      { "when": "blood", "do": [{ "type": "setFlag", "flag": "bloodStarted", "value": true }] },
+      { "when": "cxr", "do": [{ "type": "setFlag", "flag": "cxrDone", "value": true }] },
+      { "when": "chest_tube", "do": [{ "type": "setFlag", "flag": "chestTubePlaced", "value": true }, { "type": "setState", "value": "stabilizing" }] },
+      {
+        "when": "fluids",
+        "do": [
+          { "type": "modifyVitals", "delta": { "hr": -6, "bpSys": 10, "bpDia": 5 } },
+          {
+            "type": "startTimer",
+            "timerId": "fluids_wear_off",
+            "delaySec": 180,
+            "do": [{ "type": "modifyVitals", "delta": { "hr": 6, "bpSys": -8, "bpDia": -4 } }]
+          }
+        ]
+      },
+      {
+        "when": "norepi",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 20, "bpDia": 10, "hr": 2 } },
+          {
+            "type": "startTimer",
+            "timerId": "norepi_wear_off",
+            "delaySec": 240,
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -15, "bpDia": -8, "hr": -1 } }]
+          }
+        ]
+      },
+      {
+        "when": "vasopressin",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 16, "bpDia": 8 } },
+          {
+            "type": "startTimer",
+            "timerId": "vaso_wear_off",
+            "delaySec": 240,
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -12, "bpDia": -6 } }]
+          }
+        ]
+      },
+      {
+        "when": "epinephrine",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 18, "bpDia": 8, "hr": 6 } },
+          {
+            "type": "startTimer",
+            "timerId": "epi_wear_off",
+            "delaySec": 180,
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -14, "bpDia": -6, "hr": -4 } }]
+          }
+        ]
+      },
+      {
+        "when": "dirty_epi",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 10, "bpDia": 4, "hr": 4 } },
+          {
+            "type": "startTimer",
+            "timerId": "dirty_epi_wear_off",
+            "delaySec": 60,
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -10, "bpDia": -4, "hr": -4 } }]
+          }
+        ]
+      },
+      {
+        "when": "dobutamine",
+        "do": [
+          { "type": "modifyVitals", "delta": { "bpSys": 8, "bpDia": 4, "hr": 6 } },
+          {
+            "type": "startTimer",
+            "timerId": "dobutamine_wear_off",
+            "delaySec": 240,
+            "do": [{ "type": "modifyVitals", "delta": { "bpSys": -6, "bpDia": -3, "hr": -4 } }]
+          }
+        ]
+      }
+    ],
+    "timeEvents": [
+      { "atSec": 300, "ifNotFlags": ["lvl1Activated"], "do": [{ "type": "modifyVitals", "delta": { "hr": 20 } }], "message": "He is more tachycardic; bleeding is evolving." },
+      { "atSec": 600, "ifNotFlags": ["bloodStarted", "chestTubePlaced"], "do": [{ "type": "modifyVitals", "delta": { "bpSys": -38, "bpDia": -24, "hr": 25, "rr": 10, "spo2": -4 } }], "message": "Shock physiology: hypotension + hypoxia worsening." },
+      { "atSec": 900, "ifNotFlags": ["chestTubePlaced"], "do": [{ "type": "setState", "value": "crashing" }], "message": "Hemorrhagic shock; arrest risk rising." }
+    ]
+  },
+  "scoring": {
+    "mustDo": [
+      { "id": "lvl1", "bySec": 300, "points": 20, "missPenalty": -35 },
+      { "id": "ts", "bySec": 300, "points": 10, "missPenalty": -20 },
+      { "id": "blood", "bySec": 600, "points": 15, "missPenalty": -30 },
+      { "id": "chest_tube", "bySec": 600, "points": 25, "missPenalty": -50 }
+    ]
+  }
+}

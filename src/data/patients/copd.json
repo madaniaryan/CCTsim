@@ -1,0 +1,869 @@
+{
+  "id": "P002",
+  "title": "COPD Exacerbation + CAP (Hypercapnia)",
+  "room": {
+    "label": "Room 2",
+    "image": "/assets/patients/p002_room_initial.png"
+  },
+  "initial": {
+    "ageSex": "68M",
+    "chiefComplaint": "Shortness of breath",
+    "hpi": [
+      "68-year-old man with a history of chronic lung disease presents with shortness of breath. He reports feeling increasingly winded over the past several days, noting that activities he normally tolerate--such as walking from room to room--now require frequent pauses to catch his breath. He describes a persistent cough that has become more productive, though he is unsure if the sputum has changed in color. He endorses feeling warm at home with intermittent chills but states he has not measured his temperature. He denies chest pain, palpitations, or leg swelling. He does not use oxygen at baseline and states he usually gets better with inhalers, though he admits he has been using them more frequently than usual without much relief. EMS reports the patient was tachypneic and speaking in short phrases on scene. Prehospital ECG showed sinus tachycardia with left ventricular hypertrophy and no acute ischemic changes."
+    ],
+    "exam": {
+      "HEENT": [
+        "Head atraumatic, normocephalic",
+        "Pupils equal, round, reactive to light",
+        "Extraocular movements intact",
+        "Oropharynx clear",
+        "Dry oral mucous membranes"
+      ],
+      "Neck": [
+        "Supple",
+        "No meningismus",
+        "No lymphadenopathy",
+        "No jugular venous distention"
+      ],
+      "Cardiovascular": [
+        "Tachycardia",
+        "Regular rhythm",
+        "Normal S1/S2",
+        "No murmurs, rubs, or gallops"
+      ],
+      "Respiratory": [
+        "Tachypnea",
+        "Increased work of breathing",
+        "Diffuse expiratory wheezing",
+        "Prolonged expiratory phase",
+        "Diminished air movement bilaterally",
+        "Occasional accessory muscle use",
+        "No stridor",
+        "No focal crackles on initial exam"
+      ],
+      "Abdomen": [
+        "Soft",
+        "Non-distended",
+        "Non-tender",
+        "No rebound or guarding",
+        "Normal bowel sounds"
+      ],
+      "Musculoskeletal": [
+        "No joint swelling or deformity",
+        "Full range of motion in all extremities"
+      ],
+      "Skin": [
+        "Mild diaphoresis",
+        "No peripheral cyanosis",
+        "No rash"
+      ],
+      "Neurologic": [
+        "Alert and oriented x3",
+        "Cranial nerves II-XII intact",
+        "Appears fatigued, slow to respond with prolonged speaking"
+      ],
+      "Psychiatric": [
+        "Mild anxiety related to dyspnea",
+        "Appropriate affect"
+      ],
+      "Extremities / Vascular": [
+        "Warm extremities",
+        "No peripheral edema"
+      ]
+    },
+    "vitals": {
+      "hr": 112,
+      "bpSys": 145,
+      "bpDia": 85,
+      "rr": 28,
+      "spo2": 95,
+      "tempC": 38.1
+    }
+  },
+  "truth": {
+    "diagnoses": [
+      "COPD exacerbation",
+      "CAP",
+      "Acute hypercapnic respiratory failure"
+    ]
+  },
+  "state": {
+    "current": "initial",
+    "flags": {
+      "nebsGiven": false,
+      "steroidsGiven": false,
+      "abxGiven": false,
+      "vbgDone": false,
+      "bipapStarted": false
+    }
+  },
+  "orders": [
+    {
+      "id": "fs_glucose",
+      "name": "Fingerstick glucose",
+      "type": "lab",
+      "tatSec": 15,
+      "scoreDelta": -1
+    },
+    {
+      "id": "vbg",
+      "name": "VBG",
+      "type": "lab",
+      "tatSec": 120
+    },
+    {
+      "id": "cbc",
+      "name": "CBC",
+      "type": "lab",
+      "tatSec": 150
+    },
+    {
+      "id": "bmp",
+      "name": "BMP",
+      "type": "lab",
+      "tatSec": 150
+    },
+    {
+      "id": "hepatic_panel",
+      "name": "Hepatic Panel",
+      "type": "lab",
+      "tatSec": 150,
+      "scoreDelta": -1
+    },
+    {
+      "id": "pt_inr",
+      "name": "PT/INR",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "ptt",
+      "name": "PTT",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "tsh",
+      "name": "TSH",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "t4",
+      "name": "T4",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "hcg",
+      "name": "HCG",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "magnesium",
+      "name": "Magnesium",
+      "type": "lab",
+      "tatSec": 150,
+      "scoreDelta": -1
+    },
+    {
+      "id": "phosphorus",
+      "name": "Phosphorous",
+      "type": "lab",
+      "tatSec": 150,
+      "scoreDelta": -1
+    },
+    {
+      "id": "esr",
+      "name": "ESR",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "crp",
+      "name": "CRP",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "bHB",
+      "name": "Beta-hydroxybutyrate",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "lactate",
+      "name": "Lactate",
+      "type": "lab",
+      "tatSec": 150
+    },
+    {
+      "id": "bcx2",
+      "name": "Blood cultures x2",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "ua",
+      "name": "Urinalysis",
+      "type": "lab",
+      "tatSec": 180,
+      "scoreDelta": -1
+    },
+    {
+      "id": "ecg",
+      "name": "ECG",
+      "type": "lab",
+      "tatSec": 60,
+      "scoreDelta": -1
+    },
+    {
+      "id": "cxr",
+      "name": "Portable CXR",
+      "type": "imaging",
+      "tatSec": 240
+    },
+    {
+      "id": "nebs",
+      "name": "Albuterol + ipratropium stacked nebs",
+      "type": "med",
+      "tatSec": 0
+    },
+    {
+      "id": "steroids",
+      "name": "Solu-Medrol",
+      "type": "med",
+      "tatSec": 0
+    },
+    {
+      "id": "bipap",
+      "name": "Start BiPAP",
+      "type": "procedure",
+      "tatSec": 30
+    },
+    {
+      "id": "ceftriaxone_cap",
+      "name": "Ceftriaxone",
+      "type": "med",
+      "tatSec": 60
+    },
+    {
+      "id": "azithro_cap",
+      "name": "Azithromycin",
+      "type": "med",
+      "tatSec": 60
+    },
+    {
+      "id": "vanc",
+      "name": "Vancomycin",
+      "type": "med",
+      "tatSec": 60,
+      "scoreDelta": -1
+    },
+    {
+      "id": "pip_tazo",
+      "name": "Zosyn (piperacillin-tazobactam)",
+      "type": "med",
+      "tatSec": 60,
+      "scoreDelta": -1
+    },
+    {
+      "id": "unasyn",
+      "name": "Unasyn",
+      "type": "med",
+      "tatSec": 60,
+      "scoreDelta": -1
+    },
+    {
+      "id": "meropenem",
+      "name": "Meropenem",
+      "type": "med",
+      "tatSec": 60,
+      "scoreDelta": -1
+    },
+    {
+      "id": "doxycycline",
+      "name": "Doxycycline",
+      "type": "med",
+      "tatSec": 60,
+      "scoreDelta": -1
+    },
+    {
+      "id": "metronidazole",
+      "name": "Metronidazole",
+      "type": "med",
+      "tatSec": 60,
+      "scoreDelta": -1
+    },
+    {
+      "id": "bactrim",
+      "name": "Bactrim",
+      "type": "med",
+      "tatSec": 60,
+      "scoreDelta": -1
+    },
+    {
+      "id": "clinda",
+      "name": "Clindamycin",
+      "type": "med",
+      "tatSec": 60,
+      "scoreDelta": -1
+    },
+    {
+      "id": "tylenol",
+      "name": "Tylenol",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "toradol",
+      "name": "Toradol",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "motrin",
+      "name": "Motrin",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "zofran",
+      "name": "Zofran",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "reglan",
+      "name": "Reglan",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "k_oral",
+      "name": "Potassium Oral repletion",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "k_iv",
+      "name": "Potassium IV",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "mag_sulfate",
+      "name": "Magnesium sulfate 2g",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "calcium_gluconate",
+      "name": "Calcium gluconate",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "insulin_sq",
+      "name": "Regular Insulin Subq",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "o2_titrate",
+      "name": "Titrate O2 goal SpO2 88-92%",
+      "type": "nursing",
+      "tatSec": 0
+    },
+    {
+      "id": "monitor",
+      "name": "Cardiac monitoring",
+      "type": "monitoring",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "ivx2",
+      "name": "2 large-bore IVs",
+      "type": "nursing",
+      "tatSec": 30,
+      "scoreDelta": -1
+    },
+    {
+      "id": "xr_chest",
+      "name": "XR Chest",
+      "type": "imaging",
+      "tatSec": 240,
+      "scoreDelta": -1
+    },
+    {
+      "id": "xr_soft_tissue_neck",
+      "name": "XR Soft tissue neck",
+      "type": "imaging",
+      "tatSec": 240,
+      "scoreDelta": -1
+    },
+    {
+      "id": "ct_head_nc",
+      "name": "CT Head Noncontrast",
+      "type": "imaging",
+      "tatSec": 360,
+      "scoreDelta": -1
+    },
+    {
+      "id": "cta_head_neck",
+      "name": "CTA Head/Neck",
+      "type": "imaging",
+      "tatSec": 420,
+      "scoreDelta": -1
+    },
+    {
+      "id": "cta_pe",
+      "name": "CTA PE study",
+      "type": "imaging",
+      "tatSec": 420,
+      "scoreDelta": -1
+    },
+    {
+      "id": "ct_abd_pelvis",
+      "name": "CT Abdomen Pelvis W contrast",
+      "type": "imaging",
+      "tatSec": 420,
+      "scoreDelta": -1
+    },
+    {
+      "id": "admit_medicine",
+      "name": "Admit Medicine",
+      "type": "consult",
+      "tatSec": 0
+    },
+    {
+      "id": "pulm_consult",
+      "name": "Consult Pulmonary",
+      "type": "consult",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "icu_consult",
+      "name": "Consult Medical ICU",
+      "type": "consult",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "endo",
+      "name": "Consult Endocrine",
+      "type": "consult",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "rheum",
+      "name": "Consult Rheumatologist",
+      "type": "consult",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "sicu_consult",
+      "name": "Consult Surgical ICU",
+      "type": "consult",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "fluids",
+      "name": "IV crystalloids (balanced) bolus",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -1
+    },
+    {
+      "id": "norepi",
+      "name": "Norepinephrine",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    },
+    {
+      "id": "vasopressin",
+      "name": "Vasopressin",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    },
+    {
+      "id": "epinephrine",
+      "name": "Epinephrine",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    },
+    {
+      "id": "dirty_epi",
+      "name": "Push-dose epinephrine (dirty epi)",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    },
+    {
+      "id": "dobutamine",
+      "name": "Dobutamine",
+      "type": "med",
+      "tatSec": 0,
+      "scoreDelta": -2
+    }
+  ],
+  "results": {
+    "vbg": {
+      "pH": 7.28,
+      "pCO2": 68,
+      "hco3": 32
+    },
+    "cxr": {
+      "summary": "RLL infiltrate consistent with pneumonia."
+    }
+  },
+  "rules": {
+    "onOrderEffects": [
+      {
+        "when": "vbg",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "vbgDone",
+            "value": true
+          }
+        ]
+      },
+      {
+        "when": "nebs",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "nebsGiven",
+            "value": true
+          }
+        ]
+      },
+      {
+        "when": "steroids",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "steroidsGiven",
+            "value": true
+          }
+        ]
+      },
+      {
+        "when": "ceftriaxone_cap",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "abxGiven",
+            "value": true
+          }
+        ]
+      },
+      {
+        "when": "azithro_cap",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "abxGiven",
+            "value": true
+          }
+        ]
+      },
+      {
+        "when": "bipap",
+        "do": [
+          {
+            "type": "setFlag",
+            "flag": "bipapStarted",
+            "value": true
+          },
+          {
+            "type": "setState",
+            "value": "stabilizing"
+          }
+        ]
+      },
+      {
+        "when": "fluids",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "hr": -6,
+              "bpSys": 10,
+              "bpDia": 5
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "fluids_wear_off",
+            "delaySec": 180,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "hr": 6,
+                  "bpSys": -8,
+                  "bpDia": -4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "norepi",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 20,
+              "bpDia": 10,
+              "hr": 2
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "norepi_wear_off",
+            "delaySec": 240,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -15,
+                  "bpDia": -8,
+                  "hr": -1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "vasopressin",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 16,
+              "bpDia": 8
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "vaso_wear_off",
+            "delaySec": 240,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -12,
+                  "bpDia": -6
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "epinephrine",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 18,
+              "bpDia": 8,
+              "hr": 6
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "epi_wear_off",
+            "delaySec": 180,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -14,
+                  "bpDia": -6,
+                  "hr": -4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "dirty_epi",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 10,
+              "bpDia": 4,
+              "hr": 4
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "dirty_epi_wear_off",
+            "delaySec": 60,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -10,
+                  "bpDia": -4,
+                  "hr": -4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "when": "dobutamine",
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "bpSys": 8,
+              "bpDia": 4,
+              "hr": 6
+            }
+          },
+          {
+            "type": "startTimer",
+            "timerId": "dobutamine_wear_off",
+            "delaySec": 240,
+            "do": [
+              {
+                "type": "modifyVitals",
+                "delta": {
+                  "bpSys": -6,
+                  "bpDia": -3,
+                  "hr": -4
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "timeEvents": [
+      {
+        "atSec": 300,
+        "ifNotFlags": [
+          "nebsGiven"
+        ],
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "rr": 4,
+              "hr": 8
+            }
+          }
+        ],
+        "message": "Wheezing and work of breathing worsen."
+      },
+      {
+        "atSec": 600,
+        "ifNotFlags": [
+          "bipapStarted"
+        ],
+        "do": [
+          {
+            "type": "modifyVitals",
+            "delta": {
+              "rr": 4,
+              "spo2": -2
+            }
+          }
+        ],
+        "message": "Fatigue is increasing; CO2 rising."
+      },
+      {
+        "atSec": 900,
+        "ifNotFlags": [
+          "bipapStarted"
+        ],
+        "do": [
+          {
+            "type": "setState",
+            "value": "crashing"
+          }
+        ],
+        "message": "Somnolence / CO2 narcosis. Intubation pathway triggers."
+      }
+    ]
+  },
+  "scoring": {
+    "mustDo": [
+      {
+        "id": "vbg",
+        "bySec": 300,
+        "points": 10,
+        "missPenalty": -15
+      },
+      {
+        "id": "bipap",
+        "bySec": 600,
+        "points": 20,
+        "missPenalty": -35
+      },
+      {
+        "id": "nebs",
+        "bySec": 300,
+        "points": 10,
+        "missPenalty": -10
+      },
+      {
+        "id": "steroids",
+        "bySec": 600,
+        "points": 10,
+        "missPenalty": -10
+      },
+      {
+        "id": "ceftriaxone_cap",
+        "bySec": 3600,
+        "points": 8,
+        "missPenalty": -10
+      },
+      {
+        "id": "azithro_cap",
+        "bySec": 3600,
+        "points": 7,
+        "missPenalty": -10
+      }
+    ]
+  }
+}

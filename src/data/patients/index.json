@@ -1,0 +1,8 @@
+{
+  "files": [
+    "sepsis.json",
+    "copd.json",
+    "mi.json",
+    "trauma.json"
+  ]
+}
