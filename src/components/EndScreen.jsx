@@ -1,6 +1,14 @@
 import { useRef, useState } from 'react';
 
-export default function EndScreen({ summary, score, distractorStats, distractorEvents }) {
+export default function EndScreen({
+  summary,
+  score,
+  distractorStats,
+  distractorEvents,
+  playerName,
+  leaderboard,
+  leaderboardStatus,
+}) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const toggleAudio = () => {
@@ -20,6 +28,7 @@ export default function EndScreen({ summary, score, distractorStats, distractorE
       <div className="end-grid">
         <section className="end-card">
           <h3>Overall Score</h3>
+          <p>Player: {playerName || 'Unknown'}</p>
           <p className="big-score">{score}</p>
           <p>Multitask accuracy: {distractorStats.correct}/{distractorStats.total}</p>
           <div className="audio-controls">
@@ -33,6 +42,22 @@ export default function EndScreen({ summary, score, distractorStats, distractorE
               onEnded={() => setIsPlaying(false)}
             />
           </div>
+        </section>
+        <section className="end-card">
+          <h3>Leaderboard</h3>
+          <p>{leaderboardStatus}</p>
+          {leaderboard.length > 0 ? (
+            <div className="leaderboard-list">
+              {leaderboard.map((entry, idx) => (
+                <div key={`${entry.player_name}-${entry.created_at}-${idx}`} className="leaderboard-row">
+                  <span>#{idx + 1} {entry.player_name}</span>
+                  <strong>{entry.score}</strong>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No scores yet.</p>
+          )}
         </section>
         <section className="end-card">
           <h3>Score Breakdown</h3>

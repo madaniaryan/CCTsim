@@ -3,6 +3,7 @@ import Overview from './components/Overview.jsx';
 import Room from './components/Room.jsx';
 import DistractorModal from './components/DistractorModal.jsx';
 import EndScreen from './components/EndScreen.jsx';
+import StartScreen from './components/StartScreen.jsx';
 import {
   SHIFT_SECONDS,
   TIME_SCALE,
@@ -13,6 +14,7 @@ import {
   placeOrder,
   summarizeOutcome,
 } from './engine/patientEngine.js';
+import { fetchLeaderboard, submitScore } from './services/leaderboard.js';
 import './styles.css';
 
 const patientIndexModules = import.meta.glob('./data/patients/index.json', { eager: true });
@@ -52,14 +54,19 @@ export default function App() {
   const [now, setNow] = useState(0);
   const [patients, setPatients] = useState([]);
   const [loadError, setLoadError] = useState('');
+  const [playerName, setPlayerName] = useState('');
+  const [hasStarted, setHasStarted] = useState(false);
   const [activePatientId, setActivePatientId] = useState(null);
-  const [view, setView] = useState('overview');
+  const [view, setView] = useState('start');
   const [distractorScore, setDistractorScore] = useState(0);
   const [remainingDistractors, setRemainingDistractors] = useState([]);
   const [activeDistractor, setActiveDistractor] = useState(null);
   const [distractorStats, setDistractorStats] = useState({ correct: 0, total: 0 });
   const [distractorEvents, setDistractorEvents] = useState([]);
   const [adminQueue, setAdminQueue] = useState([]);
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [leaderboardStatus, setLeaderboardStatus] = useState('');
+  const [leaderboardSubmitted, setLeaderboardSubmitted] = useState(false);
 
   useEffect(() => {
     try {
@@ -73,11 +80,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (!hasStarted || view === 'end') return undefined;
     const id = setInterval(() => {
       setNow((prev) => Math.min(prev + TIME_SCALE, SHIFT_SECONDS));
     }, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [hasStarted, view]);
 
   useEffect(() => {
     setPatients((prev) => prev.map((p) => evolvePatient(p, now, activePatientId)));
@@ -96,6 +104,29 @@ export default function App() {
     const patientScore = patients.reduce((sum, p) => sum + (p.score || 0), 0);
     return patientScore + distractorScore;
   }, [patients, distractorScore]);
+
+  useEffect(() => {
+    if (view !== 'end' || leaderboardSubmitted || !playerName) return;
+    let cancelled = false;
+    setLeaderboardSubmitted(true);
+    (async () => {
+      setLeaderboardStatus('Saving score...');
+      const { usedRemote, error } = await submitScore(playerName, totalScore);
+      const rows = await fetchLeaderboard(20);
+      if (cancelled) return;
+      setLeaderboard(rows);
+      if (error) {
+        setLeaderboardStatus('Saved locally. Configure Supabase env vars for global leaderboard.');
+      } else if (usedRemote) {
+        setLeaderboardStatus('Global leaderboard updated.');
+      } else {
+        setLeaderboardStatus('Saved locally. Configure Supabase env vars for global leaderboard.');
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [view, leaderboardSubmitted, playerName, totalScore]);
 
   const handleEnterRoom = (patientId) => {
     setActivePatientId(patientId);
@@ -214,19 +245,30 @@ export default function App() {
     setActivePatientId(null);
   };
 
+  const handleStart = (name) => {
+    setPlayerName(name);
+    setHasStarted(true);
+    setView('overview');
+  };
+
   return (
     <div className="app">
       <header className="top-bar">
         <div>
           <h1>Emergency Medicine Shift Simulator</h1>
+          {playerName && <p>Player: {playerName}</p>}
           <p>Global Time: {formatClock(now)} / {formatClock(SHIFT_SECONDS)}</p>
         </div>
         <div className="score-box">
           <div className="score-label">Score</div>
           <div className="score-value">{totalScore}</div>
         </div>
-        <button className="signout" onClick={handleSignOut}>Sign out</button>
+        {hasStarted && view !== 'end' && (
+          <button className="signout" onClick={handleSignOut}>Sign out</button>
+        )}
       </header>
+
+      {view === 'start' && <StartScreen onStart={handleStart} loadError={loadError} />}
 
       {view === 'overview' && (
         <>
@@ -250,6 +292,9 @@ export default function App() {
           score={totalScore}
           distractorStats={distractorStats}
           distractorEvents={distractorEvents}
+          playerName={playerName}
+          leaderboard={leaderboard}
+          leaderboardStatus={leaderboardStatus}
         />
       )}
 

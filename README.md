@@ -18,6 +18,23 @@ npm run dev
 
 Open the URL printed by Vite.
 
+## Leaderboard setup (global)
+
+The app now asks for player name at shift start and saves scores at shift end.
+
+For a global leaderboard across users, set these environment variables:
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+
+Expected table name in Supabase: `leaderboard` with columns:
+
+- `player_name` (text)
+- `score` (int)
+- `created_at` (timestamptz, default now())
+
+If env vars are missing or Supabase is unavailable, the app falls back to local leaderboard storage in browser `localStorage`.
+
 ## Project structure
 
 ```
