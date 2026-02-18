@@ -15,25 +15,43 @@ import {
 } from './engine/patientEngine.js';
 import './styles.css';
 
-async function loadJSON(path) {
-  const res = await fetch(new URL(path, import.meta.url));
-  if (!res.ok) throw new Error(`Failed to load ${path}`);
-  return res.json();
+const patientIndexModules = import.meta.glob('./data/patients/index.json', { eager: true });
+const patientCaseModules = import.meta.glob('./data/patients/*.json', { eager: true });
+const distractorModules = import.meta.glob('./data/distractors.json', { eager: true });
+
+function getDefaultExport(moduleValue) {
+  return moduleValue && typeof moduleValue === 'object' && 'default' in moduleValue
+    ? moduleValue.default
+    : moduleValue;
 }
 
-async function loadPatients() {
-  const index = await loadJSON('./data/patients/index.json');
-  const patients = [];
-  for (const file of index.files) {
-    const data = await loadJSON(`./data/patients/${file}`);
-    patients.push(data);
-  }
-  return patients;
+function loadPatientsFromModules() {
+  const indexPath = Object.keys(patientIndexModules)[0];
+  if (!indexPath) return [];
+  const indexData = getDefaultExport(patientIndexModules[indexPath]) || {};
+  const files = Array.isArray(indexData.files) ? indexData.files : [];
+  return files
+    .map((file) => {
+      const key = `./data/patients/${file}`;
+      const moduleValue = patientCaseModules[key];
+      if (!moduleValue) return null;
+      return getDefaultExport(moduleValue);
+    })
+    .filter(Boolean);
+}
+
+function loadDistractorsFromModules() {
+  const distractorPath = Object.keys(distractorModules)[0];
+  if (!distractorPath) return [];
+  const distractorData = getDefaultExport(distractorModules[distractorPath]);
+  if (Array.isArray(distractorData)) return distractorData;
+  return distractorData?.items || [];
 }
 
 export default function App() {
   const [now, setNow] = useState(0);
   const [patients, setPatients] = useState([]);
+  const [loadError, setLoadError] = useState('');
   const [activePatientId, setActivePatientId] = useState(null);
   const [view, setView] = useState('overview');
   const [distractorScore, setDistractorScore] = useState(0);
@@ -44,20 +62,14 @@ export default function App() {
   const [adminQueue, setAdminQueue] = useState([]);
 
   useEffect(() => {
-    let mounted = true;
-    Promise.all([loadPatients(), loadJSON('./data/distractors.json')]).then(
-      ([patientData, distractorData]) => {
-        if (!mounted) return;
-        setPatients(patientData.map((data) => initPatientRuntime(data, 0)));
-        const list = Array.isArray(distractorData)
-          ? distractorData
-          : distractorData.items || [];
-        setRemainingDistractors(list);
-      }
-    );
-    return () => {
-      mounted = false;
-    };
+    try {
+      const patientData = loadPatientsFromModules();
+      const distractorData = loadDistractorsFromModules();
+      setPatients(patientData.map((data) => initPatientRuntime(data, 0)));
+      setRemainingDistractors(distractorData);
+    } catch (error) {
+      setLoadError(error?.message || 'Failed to load simulation data.');
+    }
   }, []);
 
   useEffect(() => {
@@ -217,7 +229,10 @@ export default function App() {
       </header>
 
       {view === 'overview' && (
-        <Overview patients={patients} now={now} onEnterRoom={handleEnterRoom} />
+        <>
+          {loadError && <p className="load-error">{loadError}</p>}
+          <Overview patients={patients} now={now} onEnterRoom={handleEnterRoom} />
+        </>
       )}
 
       {view === 'room' && activePatient && (
